@@ -1,0 +1,12 @@
+<Field
+    ID="{e83578ab-f63e-4c46-bae5-b0e211dd5003}"
+    DisplayName="CalendarItem"
+    Name="CalendarItem"
+    StaticName="CalendarItem"
+    Type="Lookup"
+    Required="FALSE"
+    EnforceUniqueValues="FALSE"    
+    List="Calendar"
+    ShowField="Title"
+    Hidden="TRUE"
+/>
