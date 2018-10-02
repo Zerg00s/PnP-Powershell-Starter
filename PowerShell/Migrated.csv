@@ -1,0 +1,29 @@
+Order,ProjectClasses,Title,ProjectPhase,PhaseOrder,ArtefactRequired,ApproverRoles
+1,"X,N,AB,S-300",Item 1,Planning,2,1,"Accountable Executor,Director of Sales/Director of Sales Delegate"
+2,"X,N,AB,S-300",Item 2,Planning,2,1,PMO Head
+3,"X,N,AB,S-300",Item 3,Initiation,1,1,Accountable Executor
+4,"X,N,AB,S-300",Item 4,Planning,2,1,Accountable Executor
+5,"X,N,AB,S-300",Item 5,Planning,2,1,Director of Sales
+6,"X,S-300",Item 6,Planning,2,1,Director of Sales
+7,"X,N,AB,S-300",Item 7,Initiation,1,1,
+8,"X,N,AB,S-300",Item 8,Initiation,1,1,
+9,"X,N,AB,S-300",Item 9,Initiation,1,1,
+10,"X,N,AB,S-300",Item 10,Testing,6,1,OHGF
+11,"X,N,AB,S-300",Item 11,Testing,6,1,OHGF
+12,"X,N,AB,S-300",Item 12,Testing,6,1,OHGF
+13,"X,S-300",Item 13,Closure,9,1,
+14,"X,N,AB,S-300",Item 14,Initiation,1,1,OHGF
+15,"X,N,AB,S-300",Item 15,Initiation,1,1,OHGA
+16,"X,N,AB,S-300",Item 16,Requirements,3,1,"OHGF,OHGA"
+17,"X,N,AB,S-300",Item 17,Design,4,1,Senior Managing Enterprise Architect
+18,"X,N,AB,S-300",Item 18,Initiation,1,1,OHGA
+19,"X,S-300",Item 19,Requirements,3,1,"OHGF,OHGA"
+20,"X,N,AB,S-300",Item 20,Implementation,7,1,
+21,"X,N,AB,S-300",Item 21,Planning,2,1,OHGA
+22,"X,S-300",Item 22,Requirements,3,1,"OHGF,OHGA"
+23,"X,N,AB,S-300",Item 23,Design,4,1,
+24,"X,N,AB,S-300",Item 24,Planning,2,1,Director of Sales/Director of Sales Delegate
+25,"X,N,AB,S-300",Item 25,Planning,2,1,"Director of Sales/Director of Sales Delegate,OHGF"
+26,"X,N,AB,S-300",Item 26,Design,4,1,
+27,"X,S-300",Item 27,Design,4,1,Accountable Technology Manager
+28,"X,N,AB,S-300",Item 28,Design,4,1,OHGA

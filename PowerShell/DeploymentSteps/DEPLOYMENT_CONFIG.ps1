@@ -7,31 +7,50 @@ if ($path -ne $null){
 	Write-Host $path
 }
 
-if($TARGET_SITE_URL -eq $null -or [String]::IsNullOrEmpty($TARGET_SITE_URL)){
-    [void][Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
-    $title = 'SITE URL'
-    $msg   = 'Enter full site url:'
-    $TARGET_SITE_URL = [Microsoft.VisualBasic.Interaction]::InputBox($msg, $title)
 
+if($null -eq $TARGET_SITE_URL -or [String]::IsNullOrEmpty($TARGET_SITE_URL)){
+    $TARGET_SITE_URL = Read-Host "Enter full site URL"
     $TARGET_SITE_URL = $TARGET_SITE_URL.Trim('/');
 
-    $uri = [System.Uri]$TARGET_SITE_URL
-    $SERVER_RELATIVE_WEB = $uri.AbsolutePath
-
-    if ($TARGET_SITE_URL -eq $null -or $TARGET_SITE_URL -eq ""){
+    if ($null -eq $TARGET_SITE_URL-or $TARGET_SITE_URL -eq ""){
 	    exit
 	    Throw "no URL supplied. Exiting the script"
     }
-
-    $credentials = Get-Credential
-
-    if ($credentials -ne $null){
-	    Connect-PnPOnline $TARGET_SITE_URL -Credentials $credentials
-    }
-    else{
-	    Connect-PnPOnline $TARGET_SITE_URL -CurrentCredentials
-    }
 }
+
+$done = $false
+do{
+    try{
+        $credentials = Get-Credential -Message "Please enter Office 365 credentials"
+        if ($null -ne $credentials){
+            If ($CREATE_SITE_COLLECTION -eq $true) {
+                Connect-PnPOnline -Url $("https://"+([uri]$TARGET_SITE_URL).Host) -Credentials $credentials
+            }else{
+                Connect-PnPOnline $TARGET_SITE_URL -Credentials $credentials
+            }
+            
+        }else{
+            Write-host "You've canceled the deployment process"
+            break;
+        }
+    }
+    catch [System.Net.WebException]{
+        $ErrorMessage = $_.Exception.Message
+        if($ErrorMessage -like "*SSL*"){
+            Write-host "You've entered the wrong URL. cannot continue"
+            break
+        }else{
+            Write-host "Credentials supplied didn't work. See the error below for more details" -ForegroundColor Yellow
+            Write-Host $ErrorMessage -ForegroundColor Cyan
+        }
+    }
+    Catch{
+        # Write-host Deployment process was canceled -ForegroundColor Yellow
+        $done = $true
+        break
+    }
+    $done = $true;
+} while($done -ne $true)
 
 $web = Get-PnPWeb
 $web.ServerRelativeUrl
