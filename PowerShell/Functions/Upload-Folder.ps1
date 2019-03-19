@@ -21,7 +21,7 @@ function Upload-Folder () {
     if ($file.PSIsContainer) {
       $folder = Resolve-PnPFolder -SiteRelativePath $DestinationFolder"/"$file
       Write-host $folder.Name " folder created" -ForegroundColor Magenta
-      UploadFolder $SourceFolderPath"\"$file $DestinationFolder"/"$file
+      Upload-Folder $SourceFolderPath"\"$file $DestinationFolder"/"$file
 
     }
     else {
