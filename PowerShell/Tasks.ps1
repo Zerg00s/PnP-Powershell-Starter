@@ -8,12 +8,6 @@ If ($CREATE_SITE_COLLECTION -eq $true) {
     . .\DeploymentSteps\ENSURE_SITE_COLLECTION_EXISTS.ps1
 }
 
-#-----------------------------------------------------------------------
-# Every *.ps1 file contained in the Framework folder
-#-----------------------------------------------------------------------
-Get-ChildItem -Path "Framework\*.ps1" -Recurse | ForEach-Object {
-    . $_.FullName 
-}
 
 #-----------------------------------------------------------------------
 # Every *.ps1 file contained in the Functions folder
